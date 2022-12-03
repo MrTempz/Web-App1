@@ -21,12 +21,16 @@ class Todos():
             self.todos = f.readlines()
 
     def add(self, new_todo):
-        self.todos.append(new_todo + '\n')
-        self.save_todos()
+        new_todo += '\n'
+        if new_todo not in self.todos:
+            self.todos.append(new_todo)
+            self.save_todos()
 
     def edit_by_no(self, todo_no, new_todo):
-        self.todos[todo_no] = new_todo + '\n'
-        self.save_todos()
+        new_todo += '\n'
+        if new_todo not in self.todos:
+            self.todos[todo_no] = new_todo
+            self.save_todos()
 
     def edit_by_element(self, todo, new_todo):
         try:
